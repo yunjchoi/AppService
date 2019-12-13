@@ -16,7 +16,7 @@ Before making a local copy, make sure that:
 1. The App Service Certificate is in ‘Issued’ state
 2. It’s assigned to a Key Vault (Step 1 in the link shared above).
 
-## Creating a local copy of the issued SSL certificate using PowerShell
+## Creating a local copy
 
 You can use the following PowerShell script to create a local PFX copy.
 
@@ -88,7 +88,7 @@ Export-AppServiceCertificate -loginId yourarmemail@domain.com -subscriptionId yo
 
 Once the command is executed, you would see a new file in the current directory called ‘appservicecertificate.pfx’. This is a password protected PFX, the PowerShell console would display the corresponding password. For security reasons, do not store this password in a text file. You can use the password directly from the console as required. Also, don’t forget to delete the local PFX file once you no longer need it.
 
-## Exporting the certificate with the chain included for App Service Web App consumption
+## Exporting the certificate
 
 The pfx created by the above commands will not include certificates from the chain. Services like Azure App Services expect the certificates that are being uploaded to have all the certificates in the chain included as part of the pfx file. To get the certificates of the chain to be part of the pfx, you will need to install the exported certificate on your machine first using the password that is provided by the script, make sure you mark the certificate as exportable.
 
@@ -98,7 +98,9 @@ Once you have installed the exported certificate open the certificate from your 
 
 ![certificate_store]({{ site.baseurl }}/media/2017/02/CertificationPath.png)
 
-Now go to [https://certs.godaddy.com/repository](https://certs.godaddy.com/repository) and download the intermediate certificates and the root certificate. Install all of the certificates downloaded to the same store as your certificate. Once you confirmed that all the certificates in the chain have been installed we can export the certificate with the chain by going to the certificate store, right clicking on the SSL certificate we exported and installed and clicking of **All Tasks** -> **Export** ... In the wizard, make sure you select the option, "Yes, export the private key" And then under the Personal Information Exchange property, make sure the option "Include all certificates in the certification path if possible" is checked.
+Now go to [https://certs.godaddy.com/repository](https://certs.godaddy.com/repository) and download the intermediate certificates and the root certificate. Install all of the certificates downloaded to the same store as your certificate. Once you confirmed that all the certificates in the chain have been installed we can export the certificate with the chain by going to the certificate store, right clicking on the SSL certificate we exported and installed and clicking **All Tasks** -> **Export**.
+
+In the wizard, make sure you select the option, **Yes, export the private key** And then under the "Personal Information Exchange" property, make sure the option "Include all certificates in the certification path if possible" is checked.
 
 ![]({{ site.baseurl }}/media/2017/02/Export.png)
 
