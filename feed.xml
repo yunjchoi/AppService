@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_US"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://azure.github.io/AppService/feed.xml" rel="self" type="application/atom+xml" /><link href="https://azure.github.io/AppService/" rel="alternate" type="text/html" hreflang="en_US" /><updated>2020-01-14T03:06:29+00:00</updated><id>https://azure.github.io/AppService/feed.xml</id><title type="html">App Service Blog</title><subtitle>Announcements, updates, and release notes from the Azure App Service product team.</subtitle><author><name>Azure App Service</name></author><entry><title type="html">Azure App Service on Azure Stack Hub Update 8 Released</title><link href="https://azure.github.io/AppService/2020/01/13/App-Service-on-Azure-Stack-Hub-Update-8-Released.html" rel="alternate" type="text/html" title="Azure App Service on Azure Stack Hub Update 8 Released" /><published>2020-01-13T00:00:00+00:00</published><updated>2020-01-13T00:00:00+00:00</updated><id>https://azure.github.io/AppService/2020/01/13/App%20Service%20on%20Azure%20Stack%20Hub%20Update%208%20Released</id><content type="html" xml:base="https://azure.github.io/AppService/2020/01/13/App-Service-on-Azure-Stack-Hub-Update-8-Released.html">&lt;p&gt;This afternoon we released the eighth update to Azure App Service on Azure Stack Hub. This release updates the resource provider and brings the following key capabilities and fixes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Updates to &lt;strong&gt;App Service Tenant, Admin, Functions portals and Kudu tools&lt;/strong&gt;. Consistent with Azure Stack Portal SDK version.&lt;/li&gt;
+  &lt;li&gt;Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Managed disk support&lt;/strong&gt; for all &lt;strong&gt;new deployments&lt;/strong&gt; – All new deployments of Azure App Service on Azure Stack Hub will make use of managed disks for all Virtual Machines and Virtual Machine Scale Sets.  All existing deployments will continue to use unmanaged disks.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;TLS 1.2 Enforced by Front End load Balancers&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;All other fixes and updates are detailed in the App Service on Azure Stack Update Eight Release Notes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The App Service on Azure Stack Hub Update 8 build number is &lt;strong&gt;86.0.2.13&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You can download the new installer and helper scripts:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://aka.ms/appsvcupdate8installer&quot;&gt;Installer&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://aka.ms/appsvconmashelpers&quot;&gt;Helper Scripts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Please read the updated documentation prior to getting started with deployment:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-app-service-release-notes-update-eight&quot;&gt;Update 8 Release Notes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/azure-stack/operator/azure-stack-app-service-before-you-get-started&quot;&gt;Before you get started with App Service on Azure Stack&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/azure-stack/operator/azure-stack-app-service-deploy&quot;&gt;Deploy the App Service Resource Provider&lt;/a&gt; for new deployments&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/azure-stack/operator/azure-stack-app-service-update&quot;&gt;Update the App Service Resource Provider&lt;/a&gt; for updating existing deployments&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Azure App Service</name></author><category term="Azure Stack" /><summary type="html">This afternoon we released the eighth update to Azure App Service on Azure Stack Hub. This release updates the resource provider and brings the following key capabilities and fixes:</summary></entry><entry><title type="html">App Service Environment Support for Availability Zones</title><link href="https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html" rel="alternate" type="text/html" title="App Service Environment Support for Availability Zones" /><published>2019-12-12T00:00:00+00:00</published><updated>2019-12-12T00:00:00+00:00</updated><id>https://azure.github.io/AppService/2019/12/12/App%20Service%20Environment%20Support%20for%20Availability%20Zones</id><content type="html" xml:base="https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html">&lt;p&gt;App Service has GA’d App Service Environment (ASE) support for deploying into Availability Zones (AZ).  Customers can choose to optionally deploy internal load balancer (ILB) ASEs into a specific AZ (Zone 1, 2 or 3) within an Azure region, and the resources used by that ILB ASE will either be pinned to the specified AZ, or deployed in a zone redundant manner.&lt;/p&gt;
+
+&lt;p&gt;An ILB ASE that is explicitly deployed into an AZ is considered a zonal resource because the ILB ASE is pinned to a specific zone. The following ILB ASE dependencies will be located (pinned) in the specified zone:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the internal load balancer IP address of the ASE&lt;/li&gt;
+  &lt;li&gt;the compute resources used by the ASE to manage and run web applications&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The remote file storage for web applications deployed on a zonal ILB ASE uses Zone Redundant Storage (ZRS), though this is an internal implementation detail of zonal ILB ASEs.&lt;/p&gt;
+
+&lt;p&gt;Note that unless the steps described in this article are followed, ILB ASEs are not automatically deployed in a zonal manner.  Furthermore only ILB ASEs support availability zones - external facing ASEs (i.e. ASEs that have a public IP address for accepting website traffic) currently do not support zone pinning.&lt;/p&gt;
+
+&lt;p&gt;Zonal ILB ASEs can be created in any of the following regions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Central US&lt;/li&gt;
+  &lt;li&gt;East US&lt;/li&gt;
+  &lt;li&gt;East US 2&lt;/li&gt;
+  &lt;li&gt;East US 2 (EUAP)&lt;/li&gt;
+  &lt;li&gt;France Central&lt;/li&gt;
+  &lt;li&gt;Japan East&lt;/li&gt;
+  &lt;li&gt;North Europe&lt;/li&gt;
+  &lt;li&gt;Southeast Asia&lt;/li&gt;
+  &lt;li&gt;UK South&lt;/li&gt;
+  &lt;li&gt;West US 2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Applications deployed on a zonal ILB ASE will continue to run and serve traffic on that ASE even if other zones in the same region suffer an outage.  However it is possible that non-runtime behaviors, including application service plan scaling, as well as application creation, configuration and publishing may still be impacted in the event of an outage in other availability zones.  The zone-pinned deployment of a zonal ILB ASE only ensures continued uptime for already deployed applications and the underlying network infrastructure and virtual machines running those applications.&lt;/p&gt;
+
+&lt;p&gt;Zonal ILB ASEs must be created using ARM templates.  Once a zonal ILB ASE is created via an ARM template, it can be viewed and interacted with via the Azure Portal as well as CLI tooling.  An ARM template is only needed for the initial creation of a zonal ILB ASE.&lt;/p&gt;
+
+&lt;p&gt;The only change needed in an ARM template to specify a zonal ILB ASE is the new &lt;strong&gt;&lt;em&gt;zones&lt;/em&gt;&lt;/strong&gt; property.  The &lt;strong&gt;&lt;em&gt;zones&lt;/em&gt;&lt;/strong&gt; property should be set to a value of 1, 2 or 3 depending on the logical availability zone that the ILB ASE should be pinned to.&lt;/p&gt;
+
+&lt;p&gt;The ARM template snippet below shows the new &lt;strong&gt;&lt;em&gt;zones&lt;/em&gt;&lt;/strong&gt; property specifying that the ILB ASE should be pinned to zone 2.&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nl&quot;&gt;&quot;resources&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Microsoft.Web/hostingEnvironments&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;kind&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ASEV2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;yourASENameHere&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;apiVersion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2015-08-01&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;location&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;your location here&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;zones&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;yourASENameHere&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;location&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;your location here&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;ipSslAddressCount&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;internalLoadBalancingMode&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;dnsSuffix&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;contoso-internal.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;virtualNetwork&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+           &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/subscriptions/your-subscription-id-here/resourceGroups/your-resource-group-here/providers/Microsoft.Network/virtualNetworks/your-vnet-name-here&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+           &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Subnet&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;yourSubnetNameHere&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In order to attain end-to-end zone resiliency for apps created on a zonal ILB ASE, customers need to deploy at least two zonal ILB ASEs - with each ILB ASE being pinned to a different zone.  Customers must then create and publish copies of their application onto each of the zonal ILB ASEs.&lt;/p&gt;
+
+&lt;p&gt;Customers will also  need to deploy a load balancing solution upstream of the zonal ILB ASEs so that traffic bound for an application is load-balanced and distributed across all of the zonal ILB ASEs.  The recommended solution is to deploy a zone redundant Application Gateway upstream of the zonal ILB ASEs.  More details on Application Gateway v2 and its zone redundant configuration is available &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-autoscaling-zone-redundant&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</content><author><name>Azure App Service</name></author><category term="App Service Environment" /><category term="Availability Zones" /><summary type="html">App Service has GA’d App Service Environment (ASE) support for deploying into Availability Zones (AZ). Customers can choose to optionally deploy internal load balancer (ILB) ASEs into a specific AZ (Zone 1, 2 or 3) within an Azure region, and the resources used by that ILB ASE will either be pinned to the specified AZ, or deployed in a zone redundant manner.</summary></entry><entry><title type="html">Azure CLI for ASE and Access Restriction</title><link href="https://azure.github.io/AppService/2019/12/09/Azure-CLI-for-ASE-and-Access-Restriction.html" rel="alternate" type="text/html" title="Azure CLI for ASE and Access Restriction" /><published>2019-12-09T00:00:00+00:00</published><updated>2019-12-09T00:00:00+00:00</updated><id>https://azure.github.io/AppService/2019/12/09/Azure%20CLI%20for%20ASE%20and%20Access%20Restriction</id><content type="html" xml:base="https://azure.github.io/AppService/2019/12/09/Azure-CLI-for-ASE-and-Access-Restriction.html">&lt;p&gt;Based on customer requests we have added support for automating App Service Environment operations using the Azure CLI. With the 2.0.77 release you can create, list, update, and delete ASEs as well as create App Service Plans for an ASE. You can verify your installed version using &lt;code class=&quot;highlighter-rouge&quot;&gt;az --version&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;create&lt;/code&gt; command has a number of options to make provisioning easy. In the default configuration, the command will create the necessary NSG and UDR rules and associate them with the designated subnet.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;az appservice ase create &lt;span class=&quot;nt&quot;&gt;--resource-group&lt;/span&gt; myResourceGroup &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; myAse &lt;span class=&quot;nt&quot;&gt;--vnet-name&lt;/span&gt; myVNet &lt;span class=&quot;nt&quot;&gt;--subnet&lt;/span&gt; myAseSubnet
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can configure the Virtual IP type, Frontend SKU and scale, and much more. The commands also support &lt;code class=&quot;highlighter-rouge&quot;&gt;--no-wait&lt;/code&gt; if you want to continue scripting while a command is running in the background. Give it a try and let us know through the &lt;a href=&quot;https://github.com/Azure/azure-cli&quot;&gt;Azure CLI git repo&lt;/a&gt;, if you find any issues.&lt;/p&gt;
+
+&lt;p&gt;We also added commands for working with access restrictions. Access restrictions can be used to restrict access to specific IP addresses or to subnets using service endpoints. To control these restrictions with Azure CLI, you can now use the commands found in this group:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;az webapp config access-restriction
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Access restriction commands also allow you to control inheritance of restrictions for the scm site and control individual entries for the scm site. Access restriction commands are available in PowerShell as well:&lt;/p&gt;
+
+&lt;div class=&quot;language-powershell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;Get-AzWebAppAccessRestrictionConfig&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Update-AzWebAppAccessRestrictionConfig&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add-AzWebAppAccessRestrictionRule&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Remove-AzWebAppAccessRestrictionRule&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;helpful-links&quot;&gt;Helpful links&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/cli/azure/appservice/ase?view=azure-cli-latest&quot;&gt;Azure CLI App Service Environment commands&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest&quot;&gt;Azure CLI access restriction commands&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/powershell/module/az.websites/get-azwebappaccessrestrictionconfig?view=azps-3.1.0&quot;&gt;Azure PowerShell access restriction commands&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Azure App Service</name></author><category term="devops" /><summary type="html">Based on customer requests we have added support for automating App Service Environment operations using the Azure CLI. With the 2.0.77 release you can create, list, update, and delete ASEs as well as create App Service Plans for an ASE. You can verify your installed version using az --version</summary></entry><entry><title type="html">PHP Minor Version Update for January 2020</title><link href="https://azure.github.io/AppService/2019/11/13/PHP-Minor-Version-Update-for-January-2020.html" rel="alternate" type="text/html" title="PHP Minor Version Update for January 2020" /><published>2019-11-13T00:00:00+00:00</published><updated>2019-11-13T00:00:00+00:00</updated><id>https://azure.github.io/AppService/2019/11/13/PHP%20Minor%20Version%20Update%20for%20January%202020</id><content type="html" xml:base="https://azure.github.io/AppService/2019/11/13/PHP-Minor-Version-Update-for-January-2020.html">&lt;p&gt;Latest version updates to PHP&lt;/p&gt;
+
+&lt;p&gt;In January 2020, Azure App Service will update the PHP stacks to the latest available versions. For information on the changes in the new versions, please see the change logs on the PHP website.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;PHP Version&lt;/th&gt;
+      &lt;th&gt;Change Log&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7.1.33&lt;/td&gt;
+      &lt;td&gt;http://www.php.net/ChangeLog-7.php#7.1.33&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7.2.24&lt;/td&gt;
+      &lt;td&gt;http://www.php.net/ChangeLog-7.php#7.2.24&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7.3.11&lt;/td&gt;
+      &lt;td&gt;http://www.php.net/ChangeLog-7.php#7.3.11&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>Azure App Service</name></author><category term="PHP" /><summary type="html">Latest version updates to PHP</summary></entry><entry><title type="html">Secure your Custom Domains at no cost with App Service Managed Certificates (preview)</title><link href="https://azure.github.io/AppService/2019/11/04/Announcing-Managed-Certificates.html" rel="alternate" type="text/html" title="Secure your Custom Domains at no cost with App Service Managed Certificates (preview)" /><published>2019-11-04T00:00:00+00:00</published><updated>2019-11-04T00:00:00+00:00</updated><id>https://azure.github.io/AppService/2019/11/04/Announcing%20Managed%20Certificates</id><content type="html" xml:base="https://azure.github.io/AppService/2019/11/04/Announcing-Managed-Certificates.html">&lt;p&gt;Free Transport Layer Security (TLS) for Azure App Service is now in preview! This has been one of the most highly requested features of the service since its inception. The feature is named App Service Managed Certificates and it will let you secure custom domains on your Windows and Linux apps at no additional charge. This provides developers a zero-cost option to work on their dev, test, and production sites. This feature is available for customers on an App Service Plan of Basic and above (free and shared tiers are not supported). The certificate issued will be a standard certificate and not a wildcard certificate. Each certificate will be valid for six months, and about a month before the certificate’s expiration date, App Service will renew the certificate.&lt;/p&gt;
+
+&lt;h2 id=&quot;app-service-managed-certificates-vs-app-service-certificates&quot;&gt;App Service Managed Certificates VS App Service Certificates&lt;/h2&gt;
+
+&lt;p&gt;The offering for App Service Certificates will still be available with the launch of App Service Managed Certificates as these two features have their differences and are better suited for different scenarios. Aside from the main difference of pricing, a major difference between the two is that you will not be able to export your App Service Managed Certificates as they are managed by the platform. If you’re planning to do a live site migration with TXT record, need support for apex domains, or need a wildcard certificate, then use App Service Certificates or bring your own certificate.&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-started&quot;&gt;Getting started&lt;/h2&gt;
+
+&lt;p&gt;To get started, add a CNAME record for the domain to your web app. In the Azure Portal, head to your web app and from the left navigation of your app, select TLS/SSL settings &amp;gt; Private Key Certificates (.pfx) &amp;gt; Create App Service Managed Certificate.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/AppService/media/2019/11/04/create-free-cert.png&quot; alt=&quot;Create free cert&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you’ve successfully created your App Service Managed certificate, you’ll see it on the list of Private Key Certificates.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/AppService/media/2019/11/04/create-free-cert.png&quot; alt=&quot;Finish creating a free cert&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For additional reference, see the &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-certificate&quot;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For any feedback, please reach out by creating an entry on the &lt;a href=&quot;https://docs.microsoft.com/answers/topics/azure-webapps.html&quot;&gt;developer forums&lt;/a&gt;.&lt;/p&gt;</content><author><name>Azure App Service</name></author><category term="App Service Domains" /><category term="certificates" /><summary type="html">Free Transport Layer Security (TLS) for Azure App Service is now in preview! This has been one of the most highly requested features of the service since its inception. The feature is named App Service Managed Certificates and it will let you secure custom domains on your Windows and Linux apps at no additional charge. This provides developers a zero-cost option to work on their dev, test, and production sites. This feature is available for customers on an App Service Plan of Basic and above (free and shared tiers are not supported). The certificate issued will be a standard certificate and not a wildcard certificate. Each certificate will be valid for six months, and about a month before the certificate’s expiration date, App Service will renew the certificate.</summary></entry><entry><title type="html">Azure App Service at Microsoft Ignite 2019</title><link href="https://azure.github.io/AppService/2019/11/04/Azure-App-Service-at-Microsoft-Ignite-2019.html" rel="alternate" type="text/html" title="Azure App Service at Microsoft Ignite 2019" /><published>2019-11-04T00:00:00+00:00</published><updated>2019-11-04T00:00:00+00:00</updated><id>https://azure.github.io/AppService/2019/11/04/Azure%20App%20Service%20at%20Microsoft%20Ignite%202019</id><content type="html" xml:base="https://azure.github.io/AppService/2019/11/04/Azure-App-Service-at-Microsoft-Ignite-2019.html">&lt;p&gt;During Microsoft Ignite 2019, this week, these are the Azure App Service sessions to look out for in the session catalog.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Code&lt;/th&gt;
+      &lt;th&gt;Title&lt;/th&gt;
+      &lt;th&gt;Date&lt;/th&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://myignite.techcommunity.microsoft.com/sessions/83967&quot;&gt;THR2153&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Best Practices and Tips for Operating and Monitoring Apps on Azure App Service&lt;/td&gt;
+      &lt;td&gt;Mon 4th November&lt;/td&gt;
+      &lt;td&gt;1:40pm-2:00pm&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://myignite.techcommunity.microsoft.com/sessions/83868&quot;&gt;WRK2008&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Running WordPress Applications on Azure App Service (workshop)&lt;/td&gt;
+      &lt;td&gt;Mon 4th November&lt;/td&gt;
+      &lt;td&gt;4:00pm-5:15pm&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://myignite.techcommunity.microsoft.com/sessions/82925&quot;&gt;BRK3137&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Migrate your Apps with Azure App Service Migration&lt;/td&gt;
+      &lt;td&gt;Thur 7th November&lt;/td&gt;
+      &lt;td&gt;9:15am-10:00am&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://myignite.techcommunity.microsoft.com/sessions/81601&quot;&gt;BRK3061&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Web App Network Security made Easy&lt;/td&gt;
+      &lt;td&gt;Thur 7th November&lt;/td&gt;
+      &lt;td&gt;11:45am-12:30pm&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://myignite.techcommunity.microsoft.com/sessions/81602&quot;&gt;BRK2183&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Linux based Web Application Deployment made Easy on App Service&lt;/td&gt;
+      &lt;td&gt;Fri 8th November&lt;/td&gt;
+      &lt;td&gt;10:30am-11:15am&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Members of our engineering team are also attending the event and would love to talk with any attendees, hear feedback and answer any questions you may have.&lt;/p&gt;</content><author><name>Azure App Service</name></author><summary type="html">During Microsoft Ignite 2019, this week, these are the Azure App Service sessions to look out for in the session catalog.</summary></entry><entry><title type="html">App Service Integration with Azure Monitor</title><link href="https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html" rel="alternate" type="text/html" title="App Service Integration with Azure Monitor" /><published>2019-11-01T00:00:00+00:00</published><updated>2019-11-01T00:00:00+00:00</updated><id>https://azure.github.io/AppService/2019/11/01/App%20Service%20Integration%20with%20Azure%20Monitor</id><content type="html" xml:base="https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html">&lt;p&gt;We are happy to announce that App Service has new and improved integration with Azure Monitor. You can now send your logs from Windows or Linux App Service to Storage Accounts, Event Hubs, or Log Analytics.&lt;/p&gt;
+
+&lt;h2 id=&quot;increased-visibility-into-your-web-apps&quot;&gt;Increased visibility into your web apps&lt;/h2&gt;
+
+&lt;p&gt;Azure Monitor is the central observability service to collect, analyze, and act on telemetry from your other Azure resources. You can use Azure Monitor to set up rule-based alerts, create dashboards, export to third-party services with Event Hubs, or archive logs and metrics for compliance needs.&lt;/p&gt;
+
+&lt;p&gt;App Service’s improved integration with Monitor enables new observability scenarios for development and operations teams. Developers can set up automatic emails with full stack traces when an exception is thrown. Operations teams can create dashboards to view the overall performance and stability of their applications. Compliance teams can monitor login attempts and file changes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;App Service integration with Azure Monitor is currently in preview.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;six-brand-new-log-types&quot;&gt;Six brand new log types&lt;/h2&gt;
+
+&lt;p&gt;App Service now outputs the following log types into Azure Monitor.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;AppServiceConsoleLogs&lt;/strong&gt;: Any logs or output written to the console (also known as standard output or standard error)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;AppServiceHTTPLogs&lt;/strong&gt;: Access logs from the web server (IIS for Windows web apps, Nginx for Linux)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;AppServiceEnvironmentPlatformLogs&lt;/strong&gt;: Logs for visibility into ASE operations such as scaling, configuration changes, and status&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;AppServiceAuditLogs&lt;/strong&gt;: Logs for any user login via FTP or Kudu&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;AppServiceFileAuditLogs&lt;/strong&gt;: Logs for file changes (add, delete, or update) via FTP or Kudu&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;AppServiceAppLogs&lt;/strong&gt;: Any logs or exceptions written to the stack’s logging utility. Supports multi-line logs and exceptions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The table below shows the current availability for the log categories.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Log Name&lt;/th&gt;
+      &lt;th&gt;Windows&lt;/th&gt;
+      &lt;th&gt;Linux&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AppServiceConsoleLogs&lt;/td&gt;
+      &lt;td&gt;TBA&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AppServiceHTTPLogs&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AppServiceEnvironmentPlatformLogs&lt;/td&gt;
+      &lt;td&gt;✔️   ️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AppServiceAuditLogs&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+      &lt;td&gt;✔️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AppServiceFileAuditLogs&lt;/td&gt;
+      &lt;td&gt;TBA&lt;/td&gt;
+      &lt;td&gt;TBA&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AppServiceAppLogs&lt;/td&gt;
+      &lt;td&gt;TBA&lt;/td&gt;
+      &lt;td&gt;✔️ *&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;* Supported on Java SE and Tomcat&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
+
+&lt;h3 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h3&gt;
+
+&lt;p&gt;Before you start, make sure you have the following resources created.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/azure/app-service/&quot;&gt;Create an App Service app&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Create a Storage Account, Event Hub Namespace, or Log Analytics workspace to send your logs to&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;create-a-diagnostic-setting&quot;&gt;Create a Diagnostic setting&lt;/h3&gt;
+
+&lt;p&gt;In the Azure portal, navigate to your App Service. Under &lt;strong&gt;Monitoring&lt;/strong&gt;, select &lt;strong&gt;Diagnostic settings&lt;/strong&gt; &amp;gt;  &lt;strong&gt;Add diagnostic setting&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/AppService/media/2019/11/Diagnostic-Settings-Page.png&quot; alt=&quot;Diagnostic-Settings-Page&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Enter the following information to create the Diagnostic setting.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Provide a name for the Diagnostic setting&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Select your desired destination(s) for the logs. There are three possible destinations:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Storage Account&lt;/strong&gt;: Archive your logs for auditing or backup
+        &lt;ul&gt;
+          &lt;li&gt;Needs to be in the same region as your web app&lt;/li&gt;
+          &lt;li&gt;Configure the retention days for the storage account&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Event Hub&lt;/strong&gt;: Stream the logs to third-party logging and telemetry systems&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Log Analytics Workspace&lt;/strong&gt;: Analyze the logs with other monitoring data and leverage Azure Monitor features such as log queries and log alerts&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Select the desired log categories to export. There are six log categories in addition to your metrics. The table below lists the log types with its description and availability per OS. The &lt;a href=&quot;#six-brand-new-log-types&quot;&gt;earlier section&lt;/a&gt; shows the availability of each log type&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Select &lt;strong&gt;Save&lt;/strong&gt; at the top. This will trigger App Service to begin sending your logs to the chosen destinations.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/AppService/media/2019/11/Creating-Diagnostic-Settings.png&quot; alt=&quot;Creating-Diagnostic-Settings&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;view-logs-in-a-storage-account&quot;&gt;View logs in a Storage account&lt;/h2&gt;
+
+&lt;p&gt;Open the Storage account you configured in the diagnostic setting. Then select &lt;strong&gt;Containers&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/AppService/media/2019/11/Storage-Account-1.png&quot; alt=&quot;Storage-Account-1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You will see a list of containers that have been automatically created for the logs categories you enabled.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/AppService/media/2019/11/Storage-Account-2.png&quot; alt=&quot;Storage-Account-2&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;query-logs-in-a-log-analytics-workspace&quot;&gt;Query logs in a Log Analytics Workspace&lt;/h2&gt;
+
+&lt;p&gt;Open the Log Analytics Workspace you configured in the diagnostic setting. Select &lt;strong&gt;Logs&lt;/strong&gt;, then select &lt;strong&gt;LogManagement&lt;/strong&gt;. (You will see log categories that you have not enabled.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/AppService/media/2019/11/Log-Analytics-1.png&quot; alt=&quot;Log-Anayltics-1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The App Service log categories are all prefixed with &lt;code class=&quot;highlighter-rouge&quot;&gt;AppService*&lt;/code&gt;. Select an App Service log category, this will copy the table name into the query editor. Select &lt;strong&gt;Run&lt;/strong&gt; above the editor, this will execute a simple query to show all columns of the table.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/AppService/media/2019/11/Log-Analytics-2.png&quot; alt=&quot;Log-Anayltics-2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;See &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/get-started-portal#basic-queries&quot;&gt;this article&lt;/a&gt; for more information on the Kusto Query Language.&lt;/p&gt;
+
+&lt;h2 id=&quot;stream-logs-from-event-hubs&quot;&gt;Stream logs from Event Hubs&lt;/h2&gt;
+
+&lt;p&gt;Event Hubs allows you to stream your logs and metrics to 3rd party logging and telemetry systems or to Power BI. To get started, please see the &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/azure-monitor/platform/resource-logs-stream-event-hubs&quot;&gt;Event Hubs documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;helpful-links&quot;&gt;Helpful Links&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/Azure/app-service/app-service-web-get-started-java&quot;&gt;App Service quick start&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/get-started-portal#basic-queries&quot;&gt;Tutorial for Log Analytics&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/examples&quot;&gt;Azure Monitor log query examples&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Azure App Service</name></author><category term="logs" /><category term="monitoring" /><summary type="html">We are happy to announce that App Service has new and improved integration with Azure Monitor. You can now send your logs from Windows or Linux App Service to Storage Accounts, Event Hubs, or Log Analytics.</summary></entry><entry><title type="html">Mitigate your CPU problems before they happen</title><link href="https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html" rel="alternate" type="text/html" title="Mitigate your CPU problems before they happen" /><published>2019-10-07T00:00:00+00:00</published><updated>2019-10-07T00:00:00+00:00</updated><id>https://azure.github.io/AppService/2019/10/07/Mitigate%20your%20CPU%20problems%20before%20they%20even%20happen</id><content type="html" xml:base="https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html">&lt;blockquote&gt;
+  &lt;p&gt;Currently offered in App Service Diagnostics for Windows web apps.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Imagine there is a CPU spike in your cloud application at 2:00 in the morning, would you like to be woken up to mitigate and troubleshoot the issue or would you rather have the issue mitigated automatically and troubleshoot after a good night’s sleep? For those of us that enjoy a good night’s sleep, &lt;strong&gt;Proactive CPU monitoring&lt;/strong&gt; is an easy, proactive way to take an action when your app or its child process is consuming too much CPU. You can configure CPU rules to temporarily mitigate a high CPU issue until the real cause for the unexpected issue is found.&lt;/p&gt;
+
+&lt;h2 id=&quot;finding-proactive-cpu-monitoring&quot;&gt;Finding Proactive CPU Monitoring&lt;/h2&gt;
+
+&lt;p&gt;To access &lt;strong&gt;Proactive CPU Monitoring&lt;/strong&gt;, browse to your App Service web app in &lt;a href=&quot;https://portal.azure.com&quot;&gt;Azure portal&lt;/a&gt; and click &lt;strong&gt;Diagnose and solve problems&lt;/strong&gt; in the left navigation panel. Then, click on the homepage tile named &lt;strong&gt;Diagnostic Tools&lt;/strong&gt;. Once you are inside Diagnostic Tools, click &lt;strong&gt;Proactive CPU Monitoring&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/AppService/media/2019/10/diagnostic-tools.png&quot; alt=&quot;Diagnostic Tools&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;configuring-proactive-cpu-monitoring&quot;&gt;Configuring Proactive CPU Monitoring&lt;/h2&gt;
+
+&lt;p&gt;Proactive CPU monitoring operates based on 5 conditions and 4 modes of action by checking w3wp.exe process of the site or any child processes.&lt;/p&gt;
+
+&lt;h3 id=&quot;conditions&quot;&gt;Conditions&lt;/h3&gt;
+
+&lt;p&gt;There are five conditions you can configure to tailor to your needs.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;CPU Threshold&lt;/strong&gt;: the CPU threshold at which the rule will be triggered&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Threshold Seconds&lt;/strong&gt;: the duration of the CPU exceeding the CPU threshold. The rule will be triggered at the end of the duration.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Monitor Frequency&lt;/strong&gt;: defines how often the condition will be evaluated&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Maximum Actions&lt;/strong&gt;: the maximum number of memory dumps that the rule collects, ensuring no dumps are collected beyond the set amount&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Maximum Duration&lt;/strong&gt;: the maximum duration of the rule until it becomes deactivated&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;actions&quot;&gt;Actions&lt;/h3&gt;
+
+&lt;p&gt;Once the conditions are met, your selected action is triggered. Proactive CPU Monitoring offers 4 different modes listed below.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Collect&lt;/strong&gt;: In this mode, a memory dump is collected whenever any process consumes CPU greater than the CPU Threshold for longer than the allowed Threshold Seconds. (Monitor Duration should always be lower than Threshold Seconds) Memory dump is collected via &lt;code class=&quot;highlighter-rouge&quot;&gt;ProcDump.exe&lt;/code&gt;, and the number of dumps (or actions) are controlled by Maximum Actions. Once Maximum Duration is met, the rule becomes deactivated.&lt;/p&gt;
+
+    &lt;p&gt;When the memory dump is collected, the process is frozen until the dump generation completes. The time the process is frozen depends directly on the memory consumed by the process. The size of the dump generated is also directly proportional to the memory consumed by the process.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Kill&lt;/strong&gt;:  In this mode, the process is killed when the condition is met. The Maximum Actions is not honored and monitoring stops automatically after Maximum Duration. Kill is a forceful termination of the process and not a graceful exit. All requests that the current worker process is processing will be terminated, and end users may see 502 errors. If system terminates the child process, the error message may even be 500 or some form of application exception based on the stack.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Collect and Kill&lt;/strong&gt;: In this mode, a memory dump is collected and the process consuming high CPU is killed when the site’s process (or child process) consumes CPU greater than CPU threshold for more than Threshold Seconds. No analysis is performed but after the session finishes, you have an option to analyze the memory dump after the session ends by clicking the Analyze button.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Collect, Kill, and Analyze&lt;/strong&gt;: In this mode, a memory dump is collected and the process consuming high CPU is killed when a site’s process (or child process) consumes CPU greater than the CPU threshold for longer than the allowed Threshold Seconds. In addition, CPU dumps are analyzed by DumpAnalyzer tool, and an analysis report is generated. Analyzing a dump with this tool has some CPU impact on the instance and takes roughly 5-7 minutes at minimum to analyze one dump file. Analysis can take longer if the dump size is larger and depending upon what is captured in the dump.&lt;/p&gt;
+
+    &lt;p&gt;To prevent CPU overhead, only one dump is analyzed by the instance at a time. For example, if there are 10 instances and say the monitoring collected 5 dumps, all instances in parallel can analyze memory dumps. If there is 1 instance and 5 dumps are collected, the dump analysis will happen one after the other.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/AppService/media/2019/10/proactive-cpu-monitoring-configuration.png&quot; alt=&quot;Configuring Proactive CPU Monitoring&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-next&quot;&gt;What’s Next&lt;/h2&gt;
+
+&lt;p&gt;Once you set the rule that best suits your app’s need, you can get ahead of your CPU issues, automatically mitigate CPU spikes, and save yourself from a dreadful 2:00am call.&lt;/p&gt;
+
+&lt;p&gt;Feel free to share your feedback or questions about &lt;strong&gt;Proactive CPU Monitoring&lt;/strong&gt; by emailing &lt;a href=&quot;mailto:diagnostics@microsoft.com&quot;&gt;diagnostics@microsoft.com&lt;/a&gt; or posting on &lt;a href=&quot;https://feedback.azure.com/forums/169385-web-apps​​​​​​​​​​​​​​&quot;&gt;UserVoice&lt;/a&gt; with “[Diag]” in the title.&lt;/p&gt;
+
+&lt;p&gt;For more information on other diagnostic tools, please visit &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/app-service/overview-diagnostics&quot;&gt;Azure App Service diagnostics overview&lt;/a&gt;.&lt;/p&gt;</content><author><name>Azure App Service</name></author><category term="diagnostics" /><category term="troubleshooting" /><category term="self-help" /><summary type="html">Automatically mitigate CPU anomalies and save yourself from another late-night servicing call.</summary></entry><entry><title type="html">Use ARM templates to swap deployment slots</title><link href="https://azure.github.io/AppService/2019/10/02/Swap-slots-with-arm-templates.html" rel="alternate" type="text/html" title="Use ARM templates to swap deployment slots" /><published>2019-10-02T00:00:00+00:00</published><updated>2019-10-02T00:00:00+00:00</updated><id>https://azure.github.io/AppService/2019/10/02/Swap%20slots%20with%20arm%20templates</id><content type="html" xml:base="https://azure.github.io/AppService/2019/10/02/Swap-slots-with-arm-templates.html">&lt;p&gt;&lt;em&gt;A version of this article appeared on &lt;a href=&quot;https://ruslany.net/2019/10/using-arm-template-to-swap-app-service-deployment-slots/&quot;&gt;ruslany.net&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Azure Resource Manager (ARM) templates are used to automate deployment and configuration of Azure resources. With the templates you can define the infrastructure to be deployed via a JSON file and then use that file to repeatedly deploy new resources or update existing ones. ARM templates are widely used to release new versions of the Azure web apps and function apps. During a release the new version of an app is deployed to a staging slot and then it is swapped into production. This blog post explains how to automate the App Service deployment slot swap operation with an ARM template.&lt;/p&gt;
+
+&lt;p&gt;Let’s assume you have a web app with production and staging deployment slots. When you release a new version of that web app you first would deploy it to the staging slot and then swap it into production slot. To define the swap operation via ARM template you’ll need to use two properties on the “Microsoft.Web/sites” and “Microsoft.Web/sites/slots” resources:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;buildVersion&lt;/code&gt; – this is a string property which can be set to any arbitrary value that would represent the current version of the app deployed in the slot. For example: “v1“, “1.0.0.1“, “2019-09-20T11:53:25.2887393-07:00“.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;targetBuildVersion&lt;/code&gt; – this is a string property that is used to specify what version of the app the current slot should have. If the targetBuildVersion is different from the buildVersion then this will trigger the swap operation by finding a slot that has the expected build version and then swapping the site from that slot into the current slot.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;With that the process of deploying a new version of an app can be done as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Deploy a new version of an app into a staging slot&lt;/li&gt;
+  &lt;li&gt;Execute ARM template to update the buildVersion of the app in staging slot&lt;/li&gt;
+  &lt;li&gt;Execute ARM template to set the targetBuildVersion on the production slot&lt;/li&gt;
+  &lt;li&gt;Here is an example ARM template that demonstrates how to perform steps #2 and #3:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;$schema&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;contentVersion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;parameters&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;sites_SwapAPIDemo_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;defaultValue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;SwapAPIDemo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;String&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;sites_buildVersion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;defaultValue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;v1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;String&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;resources&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Microsoft.Web/sites/slots&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;apiVersion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2018-02-01&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[concat(parameters('sites_SwapAPIDemo_name'), '/staging')]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;location&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;East US&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;kind&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;buildVersion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[parameters('sites_buildVersion')]&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Microsoft.Web/sites&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;apiVersion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2018-02-01&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[parameters('sites_SwapAPIDemo_name')]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;location&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;East US&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;kind&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;dependsOn&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[resourceId('Microsoft.Web/sites/slots', parameters('sites_SwapAPIDemo_name'), 'staging')]&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;targetBuildVersion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[parameters('sites_buildVersion')]&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This ARM template is idempotent, meaning that it can be executed repeatedly and produce the same state of the slots. In other words if you re-run the same template with the same parameters after the swap has been performed and targetBuildVersion on production slot matches the buildVersion then it will not trigger another swap.&lt;/p&gt;
+
+&lt;h2 id=&quot;helpful-links&quot;&gt;Helpful links&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/azure/app-service/deploy-staging-slots#automate-with-arm-templates&quot;&gt;Documentation for swapping slots with ARM templates&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-dotnet&quot;&gt;App Service quickstarts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/azure/app-service/deploy-staging-slots#add-a-slot&quot;&gt;How to get started with slots&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Azure App Service</name></author><category term="deployment slots" /><summary type="html">You can now use ARM templates to swap deployment slots.</summary></entry><entry><title type="html">PHP Minor Version Update for September 2019</title><link href="https://azure.github.io/AppService/2019/09/04/PHP-Minor-Version-Update-for-September-2019.html" rel="alternate" type="text/html" title="PHP Minor Version Update for September 2019" /><published>2019-09-04T00:00:00+00:00</published><updated>2019-09-04T00:00:00+00:00</updated><id>https://azure.github.io/AppService/2019/09/04/PHP%20Minor%20Version%20Update%20for%20September%202019</id><content type="html" xml:base="https://azure.github.io/AppService/2019/09/04/PHP-Minor-Version-Update-for-September-2019.html">&lt;p&gt;Latest version updates to PHP&lt;/p&gt;
+
+&lt;p&gt;In September 2019, Azure App Service will update the PHP stacks to the latest available versions. For information on the changes in the new versions, please see the change logs on the PHP website.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;PHP Version&lt;/th&gt;
+      &lt;th&gt;Change Log&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;5.6.40&lt;sup&gt;1&lt;/sup&gt;&lt;/td&gt;
+      &lt;td&gt;http://www.php.net/ChangeLog-5.php#5.6.40 + security fixes from https://github.com/microsoft/php-src/commits/PHP-5.6-security-backports&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7.0.33&lt;sup&gt;1&lt;/sup&gt;&lt;/td&gt;
+      &lt;td&gt;http://www.php.net/ChangeLog-7.php#7.0.33 + security fixes from https://github.com/microsoft/php-src/commits/PHP-7.0-security-backports&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7.1.32&lt;/td&gt;
+      &lt;td&gt;http://www.php.net/ChangeLog-7.php#7.1.32&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7.2.22&lt;/td&gt;
+      &lt;td&gt;http://www.php.net/ChangeLog-7.php#7.2.22&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7.3.9&lt;/td&gt;
+      &lt;td&gt;http://www.php.net/ChangeLog-7.php#7.3.9&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;sup&gt;1&lt;/sup&gt; - Both PHP v5.6 and v7.0 are past &lt;a href=&quot;https://www.php.net/supported-versions.php&quot;&gt;End-Of-Life&lt;/a&gt;, and are no longer receiving security updates from the community.  However, to ensure our customers have the most secure PHP builds available, we have arranged to have relevant security fixes from supported versions of PHP backported to PHP v5.6 and v7.0.&lt;/p&gt;</content><author><name>Azure App Service</name></author><category term="PHP" /><summary type="html">Latest version updates to PHP</summary></entry></feed>
